@@ -1,0 +1,298 @@
+
+body {
+    display: grid;
+    background: #1a1716;
+    margin: auto;
+    font-size: 1.2em;
+    font-family: optima, sans-serif; 
+    text-align: center;
+ 
+
+                    /* Borders to understand difference between bloks better, might delete later */
+                    grid-gap: 15px;
+                    padding: 15px;
+    
+    grid-template-areas:
+        "header"
+        "hero"
+        "body"
+        "footer"
+}
+/* Header:Brand, global nav, tools */
+/* This will be the header for a mobile version, desktop and tablet versions will be defined bellow  */
+header {
+    grid-area: header;
+    display: grid;
+    background: #3e3836;
+    font-size: 0.8em;
+    /* padding: 10px;
+    grid-gap: 10px; */
+    grid-template-columns: 1fr 1fr;
+       grid-template-areas:
+        "br br"
+        "nav tool";
+}
+                    header nav {
+                        background: #3e3836;
+                        color: #c7bab4; 
+                        /* text color 2x lighter than background color */
+                        grid-area: nav;
+                    }
+                            header nav:hover {
+                                color: #d9dbe2;
+                                background-color: #1a1716;
+                                opacity: 0.8;
+                            }
+                    header .br {
+                        background: #3e3836;
+                        color: #c7bab4; 
+                        grid-area: br;
+                        font-weight: bolder;
+                    }
+                            header .br:hover {
+                                color: #d9dbe2;
+                                background-color: #1a1716;
+                                opacity: 0.8;
+                              
+                            }
+                    header .tool {
+                        background: #3e3836;
+                        color: #c7bab4; 
+                        grid-area: tool;
+                    }
+                            header .tool:hover {
+                                color: #d9dbe2;
+                                background-color: #1a1716;
+                                opacity: 0.8;
+                            }
+/* Hero Header: hero feature and hero call to action (hero feature has to disappear in mobile*/
+.hero {
+    grid-area:hero; 
+    display: grid;
+    /* background: #3e3836; */
+    color: #3e3836;
+    font-size: 1.5em;
+       grid-template-columns: auto ;
+ 
+    grid-template-areas:
+    "feature"  
+    "action";
+}
+
+                        .hero .action {
+                            background:#ac8685;
+                            grid-area: action;
+                            font-weight: bolder;
+                        }
+                        .hero .action:hover {
+                            color: #d9dbe2;
+                            background-color: #8f9492;
+                        }
+
+                        .hero .feature {
+                            display: none;
+                            background: #ac8685;
+                            grid-area: feature;
+                        }
+
+/* BODY: Article feature, Ad, Article Listing */
+main {
+    grid-area: body;
+    display: grid;
+    text-align: center;
+    background: #1a1716;
+    color: #c7bab4;
+    padding: 20px;
+    grid-gap: 20px;
+    grid-template-columns: 1fr;
+  
+   
+    grid-template-areas: 
+        "feature"
+        "ad"
+        "listing";
+}
+
+                    main .feature {
+                        background:#524842;
+                        padding: 20px;
+                        grid-gap: 20px;
+                        text-align: justify;
+                        font-weight: bolder;
+                        grid-area: feature;
+                    }
+
+                    main .mobile-ad {
+                        grid-area: ad;
+                        align-self: center;
+                        justify-self: center;
+                    }
+                    .mobile-ad img {
+                                               width: 400px;
+                    }
+                    
+                                .mobile-ad:hover {
+                                background-color: #1a1716;
+                                opacity: 0.8; }
+
+                    main .listing {
+                        
+                        align-self: center;
+                        justify-self: center;   
+                        background: #1a1716;
+                        color: #c7bab4;
+                        grid-area: listing;
+                    }
+
+/* Footer */
+footer {
+    grid-area: footer;
+    display: grid;
+    background: #c7bab4;
+    padding: 10px;
+    grid-gap: 10px;
+    font-size: 0.7em; 
+    
+}
+
+/* Desctop ad (hide for mobile) */
+.desktop-ad {
+    grid-area: ad;
+    display: none;
+}
+                    .desktop-ad:hover {
+                        background-color: #1a1716;
+                        opacity: 0.8; 
+                    }
+.desktop-ad img {
+    align-self: center;
+    justify-self: center;
+    width: 300px;
+}
+
+
+/* Sidebar (hide for mobile) */
+.sidebar {
+        display: none;
+        grid-area: sidebar;
+        background:#524842;
+        padding: 20px;
+        grid-gap: 20px;
+        font-weight: bolder;
+        text-align: center;
+        
+       color: #c7bab4;
+       grid-template-columns: 1fr;  
+            
+            }
+
+.sidebar .feature {
+    background:#524842;
+        padding: 20px;
+        grid-gap: 20px; 
+        align-self: center;
+    justify-self: center;
+ 
+}
+
+
+/* What changes in case of tablet screen */
+@media (min-width: 576px) {
+    body {
+       grid-template-areas:
+            "header"
+            "hero"
+            "body"
+            "sidebar"
+            "footer";
+    }
+
+    header {
+        grid-template-columns: 1fr 2fr 1fr;
+        grid-template-areas:
+            "br nav tool";
+    }
+
+   
+    .hero {
+        
+        grid-template-areas:
+            "feature"
+            "action";
+    }
+
+    .hero .feature {
+        display: grid; 
+    }
+
+     main {
+        grid-template-columns: auto 300px;
+        grid-template-rows: auto auto;
+        grid-template-areas:
+            "feature ad"
+            "listing listing";
+    }
+
+    .mobile-ad img {
+        width: 300px;
+    }
+
+    .sidebar {
+        display: grid;
+    }
+
+    
+}
+
+/* What changes in case of desctop */
+@media (min-width: 992px) {
+    body {
+                grid-template-columns: 4fr 1fr;
+                grid-template-areas:
+            "header header"
+            "hero ad"
+            "body sidebar"
+            "footer footer"
+    }
+
+      .hero {
+        grid-template-columns: 2fr 1fr;
+        justify-content: center;
+        align-content: center;
+        background:#ac8685;
+        grid-template-areas:
+            "feature action"
+        
+    }
+
+   
+    main {
+        grid-template-columns: 1fr 2fr;
+        grid-template-rows: 1fr;
+        grid-template-areas:
+            "feature listing"
+    }
+
+    .mobile-ad {
+        display: none;
+    }
+
+    .desktop-ad {
+        display: grid;
+    }
+}
+
+/* Additional styling */
+/* Hyperlinks */
+
+a:link, a:visited {
+    /* background-color: #3e3836; */
+    color: #c7bab4; 
+    padding: 20px;
+    grid-gap: 20px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+  }
+
+  
